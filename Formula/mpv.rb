@@ -69,7 +69,7 @@ class Mpv < Formula
   if build.with? 'official-libass'
     depends_on 'libass'
   else
-    depends_on 'mpv-player/mpv/libass-ct'
+    depends_on 'libass'
   end
 
   if build.with? 'libav'
@@ -80,13 +80,13 @@ class Mpv < Formula
 
   depends_on 'mpg123'      => :recommended
   depends_on 'jpeg'        => :recommended
+  depends_on 'libbs2b'     => :recommended
+  depends_on 'libquvi'     => :recommended
+  depends_on 'libdvdread'  => :recommended
+  depends_on 'little-cms2' => :recommended
+  depends_on 'lua'         => :recommended
 
   depends_on 'libcaca'     => :optional
-  depends_on 'libbs2b'     => :optional
-  depends_on 'libquvi'     => :optional
-  depends_on 'libdvdread'  => :optional
-  depends_on 'little-cms2' => :optional
-  depends_on 'lua'         => :optional
   depends_on 'libbluray'   => :optional
   depends_on 'libaacs'     => :optional
   depends_on :x11          => :optional
@@ -105,7 +105,7 @@ class Mpv < Formula
     args = ["--prefix=#{prefix}", "--disable-sdl"]
     args << "--disable-x11" unless build.with? 'x11'
     args << "--enable-jack" if build.with? 'jackosx'
-    args << "--enable-macosx-bundle" if build.with? 'bundle' and build.head?
+    args << "--enable-macosx-bundle"
 
     GitVersionWriter.new(@downloader).write if build.head?
 
