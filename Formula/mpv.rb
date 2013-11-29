@@ -105,7 +105,7 @@ class Mpv < Formula
     args = ["--prefix=#{prefix}", "--disable-sdl"]
     args << "--disable-x11" unless build.with? 'x11'
     args << "--enable-jack" if build.with? 'jackosx'
-    args << "--enable-macosx-bundle"
+    args << "--enable-macosx-bundle" if build.with? 'bundle' and build.head?
 
     GitVersionWriter.new(@downloader).write if build.head?
 
