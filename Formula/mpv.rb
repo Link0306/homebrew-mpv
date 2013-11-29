@@ -102,10 +102,9 @@ class Mpv < Formula
   end
 
   def install
-    args = ["--prefix=#{prefix}", "--disable-sdl"]
+    args = ["--prefix=#{prefix}", "--disable-sdl", "--enable-macosx-bundle"]
     args << "--disable-x11" unless build.with? 'x11'
     args << "--enable-jack" if build.with? 'jackosx'
-    args << "--enable-macosx-bundle"
 
     GitVersionWriter.new(@downloader).write if build.head?
 
