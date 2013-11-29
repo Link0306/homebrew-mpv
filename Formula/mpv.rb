@@ -57,7 +57,6 @@ class Mpv < Formula
   head 'https://github.com/mpv-player/mpv.git'
   homepage 'https://github.com/mpv-player/mpv'
 
-  depends_on 'mpv-player/mpv/waf' => :build
   depends_on 'pkg-config' => :build
   depends_on DocutilsInstalled.new => :build
 
@@ -105,7 +104,7 @@ class Mpv < Formula
     args = ["--prefix=#{prefix}", "--disable-sdl"]
     args << "--disable-x11" unless build.with? 'x11'
     args << "--enable-jack" if build.with? 'jackosx'
-    args << "--enable-macosx-bundle" if build.with? 'bundle' and build.head?
+    args << "--enable-macosx-bundle"
 
     GitVersionWriter.new(@downloader).write if build.head?
 
